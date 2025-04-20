@@ -2,8 +2,6 @@ print("Flask App is Starting...")
 from flask import Flask, render_template, request, jsonify, send_file
 from flask_cors import CORS
 from flask_mysqldb import MySQL
-from torch.serialization import add_safe_globals
-from ultralytics.nn.tasks import DetectionModel
 import cv2
 import numpy as np
 import os
@@ -32,9 +30,9 @@ app.config['MYSQL_PORT'] = 3306
 
 mysql = MySQL(app)
 
-add_safe_globals([DetectionModel])  # Allow DetectionModel as a trusted class
-# Load model with proper safety settings
-model = YOLO("best.pt")  # Now this should work
+
+# Trust the source and allow full loading
+model = torch.load("best.pt", map_location='cpu', weights_only=False)
 
 UPLOAD_FOLDER = os.path.join(tempfile.gettempdir(), "road_defects_uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
