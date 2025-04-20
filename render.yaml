@@ -3,23 +3,11 @@ services:
     name: road-defect-detector
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn --config gunicorn.conf.py app:app
     envVars:
-      - key: MYSQL_HOST
-        fromDatabase:
-          name: sql7.freesqldatabase.com
-          property: host
-      - key: MYSQL_USER
-        fromDatabase:
-          name: sql7772889
-          property: user
-      - key: MYSQL_PASSWORD
-        fromDatabase:
-          name: fhUSkTElXj
-          property: password
-      - key: MYSQL_DB
-        fromDatabase:
-          name: sql7772889
-          property: database
-      - key: MYSQL_PORT
-        value: 3306
+      - key: PORT
+        value: 10000
+    disk:
+      name: data_volume
+      mountPath: /data
+      sizeGB: 1
