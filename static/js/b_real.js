@@ -1,7 +1,3 @@
-// With this (use your actual Render URL):
-const API_BASE_URL = 'https://terminus-tt5b.onrender.com';
-fetch(`${API_BASE_URL}/detect`, { method: 'POST', body: formData })
-
 let videoStream;
 let detectionInterval;
 let recordedChunks = [];
@@ -67,7 +63,7 @@ function stopDetection() {
             formData.append('video', blob, 'live_detection.mp4');
             formData.append('road_id', document.getElementById('roadId').value);
             
-            fetch('${API_BASE_URL}/detect', { method: 'POST', body: formData })
+            fetch('https://terminus-tt5b.onrender.com/detect', { method: 'POST', body: formData })
             .then(response => response.json())
             .then(data => {
                 alert("Live detection video saved.");
@@ -94,7 +90,7 @@ function captureFrame(video) {
             formData.append('longitude', currentLocation.longitude);
         }
 
-        fetch('${API_BASE_URL}/detect_frame', { method: 'POST', body: formData })
+        fetch('https://terminus-tt5b.onrender.com/detect_frame', { method: 'POST', body: formData })
         .then(response => response.json())
         .then(data => {
             const defectList = document.getElementById('defectList');
@@ -128,7 +124,7 @@ function uploadVideo() {
     formData.append('video', file);
     formData.append('road_id', document.getElementById('roadId').value);
 
-    fetch('${API_BASE_URL}/detect', { method: 'POST', body: formData })
+    fetch('https://terminus-tt5b.onrender.com/detect', { method: 'POST', body: formData })
     .then(response => response.json())
     .then(data => {
         alert("Detection complete. Check detected defects.");
@@ -143,7 +139,7 @@ function generateReport() {
     const roadId = document.getElementById('roadId').value;
     if (!roadId) return alert("Enter Road ID.");
 
-    fetch('${API_BASE_URL}/generate_pdf', {
+    fetch('https://terminus-tt5b.onrender.com/generate_pdf', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ road_id: roadId })
@@ -165,7 +161,7 @@ function downloadAnnotatedVideo() {
     const roadId = document.getElementById('roadId').value;
     if (!roadId) return alert("Enter Road ID.");
 
-    fetch(`{API_BASE_URL}/download_video/${roadId}`)
+    fetch(`https://terminus-tt5b.onrender.com/download_video/${roadId}`)
     .then(response => response.blob())
     .then(blob => {
         const url = window.URL.createObjectURL(blob);
