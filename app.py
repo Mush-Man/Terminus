@@ -31,8 +31,7 @@ app.config['MYSQL_PORT'] = 3306
 mysql = MySQL(app)
 
 
-# Trust the source and allow full loading
-model = torch.load("best.pt", map_location='cpu', weights_only=False)
+model = YOLO("best.pt")
 
 UPLOAD_FOLDER = os.path.join(tempfile.gettempdir(), "road_defects_uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
