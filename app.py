@@ -8,6 +8,7 @@ import os
 import time
 import base64
 from ultralytics import YOLO
+import torch
 from reportlab.pdfgen import canvas
 from datetime import datetime
 import tempfile
@@ -28,6 +29,8 @@ app.config['MYSQL_DB'] = 'sql7772889'
 app.config['MYSQL_PORT'] = 3306 
 
 mysql = MySQL(app)
+
+torch.serialization.add_safe_globals([getattr(__import__("ultralytics.nn.tasks"), "DetectionModel")])
 
 # Load YOLO Model
 model = YOLO("best (1).pt")
