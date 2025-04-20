@@ -1,0 +1,9 @@
+Flask
+Flask-Cors
+Flask-MySQLdb
+opencv-python
+numpy
+ultralytics
+reportlab
+python-dotenv
+mysqlclient
