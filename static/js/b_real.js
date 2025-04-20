@@ -1,5 +1,6 @@
-// Configuration
-const API_BASE_URL = window.location.origin; // Will automatically use your Render URL
+// With this (use your actual Render URL):
+const API_BASE_URL = 'https://terminus-tt5b.onrender.com';
+fetch(`${API_BASE_URL}/detect`, { method: 'POST', body: formData })
 
 let videoStream;
 let detectionInterval;
