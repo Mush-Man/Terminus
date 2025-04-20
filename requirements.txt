@@ -1,9 +1,10 @@
-Flask
-Flask-Cors
-Flask-MySQLdb
-opencv-python
-numpy
-ultralytics
-reportlab
+Flask==2.3.2
+Flask-Cors==4.0.0
+Flask-MySQLdb==1.0.1
+opencv-python-headless==4.8.0.76  # Use headless version for servers
+numpy==1.24.3
+ultralytics==8.0.196
+reportlab==4.0.4
+mysqlclient==2.2.0
 python-dotenv
-mysqlclient
+gunicorn==21.2.0  # Required for production deployment
