@@ -1,6 +1,6 @@
 Flask
 Flask-Cors
-Flask-MySQLdb==1.0.1
+Flask-MySQLdb
 opencv-python-headless  # Use headless version for servers
 numpy
 ultralytics
