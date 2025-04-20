@@ -1,11 +1,11 @@
-Flask==2.3.2
-Flask-Cors==4.0.0
+Flask
+Flask-Cors
 Flask-MySQLdb==1.0.1
-opencv-python-headless==4.8.0.76  # Use headless version for servers
-numpy==1.24.3
-ultralytics==8.0.196
-torch>=2.0.0
-reportlab==4.0.4
-mysqlclient==2.2.0
+opencv-python-headless  # Use headless version for servers
+numpy
+ultralytics
+torch
+reportlab
+mysqlclient
 python-dotenv
-gunicorn==21.2.0  # Required for production deployment
+gunicorn # Required for production deployment
