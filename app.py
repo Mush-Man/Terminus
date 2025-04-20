@@ -32,12 +32,12 @@ mysql = MySQL(app)
 
 # Load model with proper safety settings
 try:
-    model = YOLO("best.pt")  # Make sure filename matches exactly
+    model = YOLO("best (1).pt")  # Make sure filename matches exactly
 except Exception as e:
     print(f"Error loading model: {e}")
     # Fallback for PyTorch 2.6+ if needed
     torch.serialization.add_safe_globals([torch.nn.Module])  # More general approach
-    model = YOLO("best.pt")
+    model = YOLO("best (1).pt")
 
 UPLOAD_FOLDER = os.path.join(tempfile.gettempdir(), "road_defects_uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
