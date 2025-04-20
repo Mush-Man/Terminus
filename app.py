@@ -30,10 +30,14 @@ app.config['MYSQL_PORT'] = 3306
 
 mysql = MySQL(app)
 
-torch.serialization.add_safe_globals([getattr(__import__("ultralytics.nn.tasks"), "DetectionModel")])
-
-# Load YOLO Model
-model = YOLO("best (1).pt")
+# Load model with proper safety settings
+try:
+    model = YOLO("best.pt")  # Make sure filename matches exactly
+except Exception as e:
+    print(f"Error loading model: {e}")
+    # Fallback for PyTorch 2.6+ if needed
+    torch.serialization.add_safe_globals([torch.nn.Module])  # More general approach
+    model = YOLO("best.pt")
 
 UPLOAD_FOLDER = os.path.join(tempfile.gettempdir(), "road_defects_uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
