@@ -46,7 +46,7 @@ async function startDetection() {
     
     detectionInterval = setInterval(() => {
         captureFrame(video);
-    }, 1000);
+    }, 5000);
 }
 
 function stopDetection() {
