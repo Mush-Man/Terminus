@@ -3,7 +3,7 @@ services:
     name: road-defect-detector
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn --config gunicorn.conf.py app:app
+    startCommand: gunicorn --config gunicorn.conf.py app:app --timeout 600 --workers 1
     envVars:
       - key: PORT
         value: 10000
